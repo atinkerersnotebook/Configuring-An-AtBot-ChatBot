@@ -1,5 +1,9 @@
-﻿# Creating an AtBot ChatBot connected to Dynamics 365
-Creating Bots that integrate with Dynamics 365 has not been the easiest thing to do in the past for non-developers because it has required a lot of coding to be done, and also in order to change the conversation flows you needed to update and redeploy the code for the Bot to make it available to the users.Recently I was introduced to a partner solution called AtBot that allows us to create Bot services through the AtBot portal that links to LUIS and Azure Bot  Services, allowing us to build conversation flows and dialogs using Flow as the authoring engine.This allows us to build Bots with zero coding experience that also leverages the power of Flow to connect to other services seamlessly, allowing us to integrate Dynamics 365 using the standard entities.In this walkthough we will show you how to configure and build an AtBot Bot that connects to Dynamics 365, using LUIS as the engine for discoving the users intent and deploy it out to chat platforms like Microsoft Teams.This is gold I tell you, gold!
+﻿# Introduction
+Creating Bots that integrate with Dynamics 365 has not been the easiest thing to do in the past for non-developers because it has required a lot of coding to be done, and also in order to change the conversation flows you needed to update and redeploy the code for the Bot to make it available to the users.
+Recently I was introduced to a partner solution called AtBot that allows us to create Bot services through the AtBot portal that links to LUIS and Azure Bot  Services, allowing us to build conversation flows and dialogs using Flow as the authoring engine.
+This allows us to build Bots with zero coding experience that also leverages the power of Flow to connect to other services seamlessly, allowing us to integrate Dynamics 365 using the standard entities.
+In this walkthough we will show you how to configure and build an AtBot Bot that connects to Dynamics 365, using LUIS as the engine for discoving the users intent and deploy it out to chat platforms like Microsoft Teams.
+This is gold I tell you, gold!
 
 # Building a LUIS language model
 We will start off by creating a LUIS language model that will be used by the Bot to infer what the intention of our questions are when we ask them.
@@ -11,7 +15,8 @@ To do this, all you need to do is navigate to the LUIS website by going to http:
 
 ![Image 001.png](images/a019531d-8d05-45ce-bacf-b258ab74a356.png)
 
-This will allow you to authenticate with LUIS using your AD account.And that will take you into the My Apps page within LUIS where you will be able to manage all of the different applications that you have trained within the Language Understanding system.
+This will allow you to authenticate with LUIS using your AD account.
+And that will take you into the My Apps page within LUIS where you will be able to manage all of the different applications that you have trained within the Language Understanding system.
 
 ![Image 003.png](images/9180c841-bf48-4f35-9263-488d5f5e77b5.png)
 
@@ -30,7 +35,8 @@ Start off by giving the app a Name.  Here we set the Name to Supply Chain Servic
 
 ![Image 005.png](images/0107fb89-015c-4b00-b165-f72dd402830e.png)
 
-And if you want, you can give your app a more detailed Description.  Here we set the Description to Supply Chain Language Domain Service.After you have done that just click on the Done button to create the new LUIS app.
+And if you want, you can give your app a more detailed Description.  Here we set the Description to Supply Chain Language Domain Service.
+After you have done that just click on the Done button to create the new LUIS app.
 
 ![Image 006.png](images/335a9acc-2295-4cef-8d82-71e06f885245.png)
 
@@ -72,9 +78,11 @@ This will take us into the Intents page within LUIS that we will use to describe
 ![Image 010.png](images/92013c22-de2e-4f21-9255-b8c63f00a55a.png)
 
 # Building an Utterance library
-Now that we have the intent defined we can start building the library of different ways that we can ask the same question by defining Utterances within the Intents section of LUIS.These will be the basis of our training model within LUIS that will help the system understand your questions.
+Now that we have the intent defined we can start building the library of different ways that we can ask the same question by defining Utterances within the Intents section of LUIS.
+These will be the basis of our training model within LUIS that will help the system understand your questions.
 
-All we need to do is start typing in the different Utterances that we may use to achieve the intent that we are defining.For our first one we will type in a common way to ask about a product and enter Do we have any bricks?
+All we need to do is start typing in the different Utterances that we may use to achieve the intent that we are defining.
+For our first one we will type in a common way to ask about a product and enter Do we have any bricks?
 
 ![Image 011.png](images/c6aac6dd-1ee9-4dae-805e-232f05d445bb.png)
 
@@ -100,7 +108,8 @@ Next we will rephrase it and add another variation and also change the name of t
 
 ![](images/7319b3a0-967b-4538-8ea6-1ed38e508ae5.png)
 
-And we will add one last variation of the utterance and add do we have any tiles in stock?That should give us enough to start training LUIS.
+And we will add one last variation of the utterance and add do we have any tiles in stock?
+That should give us enough to start training LUIS.
 
 ![Image 016.png](images/fe008c4b-44d2-4a1b-b3be-278fe07d7f12.png)
 
@@ -197,7 +206,8 @@ This will open up a confirmation dialog box that will allow us to choose where w
 
 ![](images/81b07f34-3cd1-43de-981a-da814a02a45d.png)
 
-If we click on the Keys and Endpoints option then we will also see some more information about the app including the end points, authoring key and also the password key that we will need later on to link our bot to the LUIS app.So bookmark this page for one of the later steps.
+If we click on the Keys and Endpoints option then we will also see some more information about the app including the end points, authoring key and also the password key that we will need later on to link our bot to the LUIS app.
+So bookmark this page for one of the later steps.
 
 ![Image 036.png](images/63097400-5a5d-43f8-9712-e3bfad126604.png)
 
